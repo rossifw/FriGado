@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +15,7 @@ namespace FriGado.App.Models
         public int Quantidade { get; set; }
 
 
-        private static readonly string _url = "https://localhost:44345/api/compraGadoItem";
+        private static readonly string _url = $"{Config.APIUrl}/compraGadoItem";
         private static readonly HttpClient _client = new HttpClient();
 
         public static async Task<CompraGadoItem> Get(int id)

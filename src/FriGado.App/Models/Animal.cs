@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +13,7 @@ namespace FriGado.App.Models
         public string Descricao { get; set; }
         public decimal Preco { get; set; }
 
-        private static readonly string _url = "https://localhost:44345/api/animal";
+        private static readonly string _url = $"{Config.APIUrl}/animal";
         private static readonly HttpClient _client = new HttpClient();
 
         public static async Task<Animal> Get(int id)

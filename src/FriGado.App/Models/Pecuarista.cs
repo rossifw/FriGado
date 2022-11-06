@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace FriGado.App.Models
 {
@@ -15,7 +13,7 @@ namespace FriGado.App.Models
         public int Id { get; set; }
         public string Nome { get; set; }
 
-        private static readonly string _url = "https://localhost:44345/api/pecuarista";
+        private static readonly string _url = $"{Config.APIUrl}/pecuarista";
         private static readonly HttpClient _client = new HttpClient();
 
         public static async Task<Pecuarista> Get(int id)
