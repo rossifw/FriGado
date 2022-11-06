@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3E953DD1-870D-4A60-B599-73529F2B7990}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Marfrig.App</RootNamespace>
-    <AssemblyName>Marfrig.App</AssemblyName>
+    <RootNamespace>FriGado.App</RootNamespace>
+    <AssemblyName>FriGado.App</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -138,6 +138,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\CompraGadoItem.cs" />
     <Compile Include="Splash\FrmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +177,8 @@
       <DependentUpon>FrmSplash.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FriGado.App.Models.CompraGadoItem.datasource" />
+    <None Include="Properties\DataSources\FriGado.App.Reports.CompraGadoItem.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

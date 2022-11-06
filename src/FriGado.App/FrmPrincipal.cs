@@ -1,7 +1,9 @@
 ﻿using FriGado.App.Forms;
 using FriGado.App.Login;
+using FriGado.App.Models;
 using FriGado.App.Splash;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace FriGado.App
@@ -76,9 +78,29 @@ namespace FriGado.App
             CarregarForm(new FrmCompraGadoItem(), btnCompraGadoItem);
         }
 
-        private void btnRelatorio_Click(object sender, EventArgs e)
+        private async void btnRelatorio_Click(object sender, EventArgs e)
         {
-            new FrmRelatorio().ShowDialog();
+            var dataTable = new DataTable();
+            dataTable.Columns.Add("Animal");
+            dataTable.Columns.Add("Quantidade");
+            dataTable.Columns.Add("Preco");
+            dataTable.Columns.Add("Total");
+
+            var compraGadoItens = await CompraGadoItem.GetTodos();
+
+            foreach (var item in compraGadoItens)
+            {
+                string[] cols = new string[4];
+                cols[0] = item.Animal.Descricao;
+                cols[1] = item.Quantidade.ToString();
+                cols[2] = string.Format("{0:C}", item.Animal.Preco);
+                cols[3] = string.Format("{0:C}", item.Quantidade * item.Animal.Preco);
+
+                dataTable.Rows.Add(cols);
+            }
+
+
+            new FrmRelatorio(dataTable).ShowDialog();
         }
     }
 }
