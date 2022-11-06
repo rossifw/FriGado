@@ -50,3 +50,8 @@ namespace FriGado.App
     }
 }
 ```
+
+### Rodando direto do Visual Studio
+As aplicações, app e api, podem ser executadas juntas no visual studio, para isso basta configurar os projetos de inicialização
+![image](https://user-images.githubusercontent.com/11152752/200192161-80ed217e-0092-4cca-a3a3-ba4eff234079.png)
+
