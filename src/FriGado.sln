@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Client Side", "1 - Clie
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Server Side", "2 - Server Side", "{6C5638E9-5B29-4574-A131-D24B604EFB4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriGado.App", "FriGado.App\FriGado.App.csproj", "{A8C71767-C35C-46FD-977F-35D562914D1B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriGado.API", "FriGado.API\FriGado.API.csproj", "{7640CE96-C9DF-44E9-B5D6-85492EAF4C29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriGado.App", "FriGado.App\FriGado.App.csproj", "{3E953DD1-870D-4A60-B599-73529F2B7990}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,21 +17,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A8C71767-C35C-46FD-977F-35D562914D1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8C71767-C35C-46FD-977F-35D562914D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8C71767-C35C-46FD-977F-35D562914D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8C71767-C35C-46FD-977F-35D562914D1B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7640CE96-C9DF-44E9-B5D6-85492EAF4C29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7640CE96-C9DF-44E9-B5D6-85492EAF4C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7640CE96-C9DF-44E9-B5D6-85492EAF4C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7640CE96-C9DF-44E9-B5D6-85492EAF4C29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E953DD1-870D-4A60-B599-73529F2B7990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E953DD1-870D-4A60-B599-73529F2B7990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E953DD1-870D-4A60-B599-73529F2B7990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E953DD1-870D-4A60-B599-73529F2B7990}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A8C71767-C35C-46FD-977F-35D562914D1B} = {67947D09-A8D9-448A-927F-D56FB8ED524C}
 		{7640CE96-C9DF-44E9-B5D6-85492EAF4C29} = {6C5638E9-5B29-4574-A131-D24B604EFB4F}
+		{3E953DD1-870D-4A60-B599-73529F2B7990} = {67947D09-A8D9-448A-927F-D56FB8ED524C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7D96607B-1D33-46E8-992B-E9690D3BF42C}

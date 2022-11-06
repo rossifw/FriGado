@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FriGado.App
+namespace FriGado.App.Forms
 {
-    public partial class Form1 : Form
+    public partial class FrmRelatorio : Form
     {
-        public Form1()
+        public FrmRelatorio()
         {
             InitializeComponent();
+        }
+
+        private void FrmRelatorio_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
         }
     }
 }
