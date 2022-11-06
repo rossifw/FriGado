@@ -9,6 +9,12 @@ go
 use mf01;
 go
 
+create table Tb_Usuario (
+	Id int not null primary key identity(1,1),
+	Login varchar(50) not null,
+	Nome varchar(100) not null,
+	Senha varchar(64) not null
+)
 
 create table Tb_Pecuarista (
 	Id int not null primary key identity(1,1),
@@ -82,6 +88,10 @@ insert into Tb_CompraGadoItem(Id, IdCompraGado, IdPecuaristaCompraGado, IdAnimal
 insert into Tb_CompraGadoItem(Id, IdCompraGado, IdPecuaristaCompraGado, IdAnimal, Quantidade) values(05, 05, 01, 05, 100);
 SET IDENTITY_INSERT Tb_CompraGadoItem OFF
 
+
+SET IDENTITY_INSERT Tb_Usuario ON
+insert into Tb_Usuario(id, Login, Nome, Senha) values(01, 'admin', 'Administrador', 'fede7086f704c1552301ded0dbf05c955483e5fc41b260d6c50a8441d733d4c2');
+SET IDENTITY_INSERT Tb_Usuario OFF
 
 select i.Id, a.Descricao, i.Quantidade, a.Preco [Preço unitário], a.Preco*i.Quantidade Total, p.Nome Pecuarista, c.DataEntrega from Tb_CompraGadoItem i
 inner join Tb_Animal a on a.Id = i.IdAnimal

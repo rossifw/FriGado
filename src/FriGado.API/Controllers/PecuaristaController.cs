@@ -1,5 +1,6 @@
 ﻿using FriGado.API.Domain;
 using FriGado.API.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,12 +18,14 @@ namespace FriGado.API.Controllers
         }
 
         [HttpGet]
+        [Authorize("Bearer")]
         public IActionResult GetAll()
         {
             return Ok(pecuarista.ListAll());
         }
 
         [HttpGet("{id}")]
+        [Authorize("Bearer")]
         public IActionResult GetById(int id)
         {
             try { return Ok(pecuarista.GetPecuarista(id)); }
@@ -30,6 +33,7 @@ namespace FriGado.API.Controllers
         }
 
         [HttpPost]
+        [Authorize("Bearer")]
         public IActionResult Add([FromBody] Pecuarista pecuarista)
         {
             try { return Ok(this.pecuarista.Add(pecuarista)); }
@@ -37,6 +41,7 @@ namespace FriGado.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize("Bearer")]
         public IActionResult Remove(int id)
         {
             try { return Ok(this.pecuarista.Remove(id)); }
@@ -44,6 +49,7 @@ namespace FriGado.API.Controllers
         }
 
         [HttpPut]
+        [Authorize("Bearer")]
         public IActionResult Update([FromBody] Pecuarista pecuarista)
         {
             try { return Ok(this.pecuarista.Update(pecuarista)); }
