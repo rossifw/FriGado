@@ -181,7 +181,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "FriGado";
             this.pnMenu.ResumeLayout(false);
             this.pnPai.ResumeLayout(false);
             this.ResumeLayout(false);
