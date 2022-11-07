@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPreco = new System.Windows.Forms.TextBox();
-            this.lblPreco = new System.Windows.Forms.Label();
-            this.txtDescicao = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.lblDescricao = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
@@ -40,52 +36,26 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
+            this.lblCompra = new System.Windows.Forms.Label();
+            this.lblAnimal = new System.Windows.Forms.Label();
+            this.comboCompraGado = new System.Windows.Forms.ComboBox();
+            this.comboAnimal = new System.Windows.Forms.ComboBox();
+            this.lblQuantidade = new System.Windows.Forms.Label();
+            this.txtQuantidade = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtPreco
-            // 
-            this.txtPreco.Location = new System.Drawing.Point(342, 101);
-            this.txtPreco.Name = "txtPreco";
-            this.txtPreco.Size = new System.Drawing.Size(146, 20);
-            this.txtPreco.TabIndex = 40;
-            // 
-            // lblPreco
-            // 
-            this.lblPreco.AutoSize = true;
-            this.lblPreco.Location = new System.Drawing.Point(301, 104);
-            this.lblPreco.Name = "lblPreco";
-            this.lblPreco.Size = new System.Drawing.Size(35, 13);
-            this.lblPreco.TabIndex = 39;
-            this.lblPreco.Text = "Preço";
-            // 
-            // txtDescicao
-            // 
-            this.txtDescicao.Location = new System.Drawing.Point(73, 127);
-            this.txtDescicao.Name = "txtDescicao";
-            this.txtDescicao.Size = new System.Drawing.Size(415, 20);
-            this.txtDescicao.TabIndex = 38;
-            // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(73, 101);
+            this.txtId.Location = new System.Drawing.Point(36, 100);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(76, 20);
+            this.txtId.Size = new System.Drawing.Size(43, 20);
             this.txtId.TabIndex = 37;
-            // 
-            // lblDescricao
-            // 
-            this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Location = new System.Drawing.Point(12, 130);
-            this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(55, 13);
-            this.lblDescricao.TabIndex = 36;
-            this.lblDescricao.Text = "Descrição";
             // 
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(49, 104);
+            this.lblId.Location = new System.Drawing.Point(12, 103);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(18, 13);
             this.lblId.TabIndex = 35;
@@ -100,6 +70,7 @@
             this.btnAdicionar.TabIndex = 34;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // dgv
             // 
@@ -113,6 +84,7 @@
             this.dgv.ReadOnly = true;
             this.dgv.Size = new System.Drawing.Size(500, 343);
             this.dgv.TabIndex = 33;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // btnPesquisar
             // 
@@ -145,6 +117,7 @@
             this.btnExcluir.TabIndex = 30;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -155,6 +128,57 @@
             this.btnAlterar.TabIndex = 29;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // lblCompra
+            // 
+            this.lblCompra.AutoSize = true;
+            this.lblCompra.Location = new System.Drawing.Point(96, 104);
+            this.lblCompra.Name = "lblCompra";
+            this.lblCompra.Size = new System.Drawing.Size(43, 13);
+            this.lblCompra.TabIndex = 41;
+            this.lblCompra.Text = "Compra";
+            // 
+            // lblAnimal
+            // 
+            this.lblAnimal.AutoSize = true;
+            this.lblAnimal.Location = new System.Drawing.Point(96, 130);
+            this.lblAnimal.Name = "lblAnimal";
+            this.lblAnimal.Size = new System.Drawing.Size(38, 13);
+            this.lblAnimal.TabIndex = 42;
+            this.lblAnimal.Text = "Animal";
+            // 
+            // comboCompraGado
+            // 
+            this.comboCompraGado.FormattingEnabled = true;
+            this.comboCompraGado.Location = new System.Drawing.Point(145, 100);
+            this.comboCompraGado.Name = "comboCompraGado";
+            this.comboCompraGado.Size = new System.Drawing.Size(184, 21);
+            this.comboCompraGado.TabIndex = 43;
+            // 
+            // comboAnimal
+            // 
+            this.comboAnimal.FormattingEnabled = true;
+            this.comboAnimal.Location = new System.Drawing.Point(145, 127);
+            this.comboAnimal.Name = "comboAnimal";
+            this.comboAnimal.Size = new System.Drawing.Size(343, 21);
+            this.comboAnimal.TabIndex = 44;
+            // 
+            // lblQuantidade
+            // 
+            this.lblQuantidade.AutoSize = true;
+            this.lblQuantidade.Location = new System.Drawing.Point(350, 104);
+            this.lblQuantidade.Name = "lblQuantidade";
+            this.lblQuantidade.Size = new System.Drawing.Size(62, 13);
+            this.lblQuantidade.TabIndex = 45;
+            this.lblQuantidade.Text = "Quantidade";
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Location = new System.Drawing.Point(418, 101);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(70, 20);
+            this.txtQuantidade.TabIndex = 46;
             // 
             // FrmCompraGadoItem
             // 
@@ -162,11 +186,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(500, 500);
-            this.Controls.Add(this.txtPreco);
-            this.Controls.Add(this.lblPreco);
-            this.Controls.Add(this.txtDescicao);
+            this.Controls.Add(this.txtQuantidade);
+            this.Controls.Add(this.lblQuantidade);
+            this.Controls.Add(this.comboAnimal);
+            this.Controls.Add(this.comboCompraGado);
+            this.Controls.Add(this.lblAnimal);
+            this.Controls.Add(this.lblCompra);
             this.Controls.Add(this.txtId);
-            this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.dgv);
@@ -177,6 +203,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCompraGadoItem";
             this.Text = "FrmCompraGadoItem";
+            this.Load += new System.EventHandler(this.FrmCompraGadoItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -184,12 +211,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtPreco;
-        private System.Windows.Forms.Label lblPreco;
-        private System.Windows.Forms.TextBox txtDescicao;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.DataGridView dgv;
@@ -197,5 +219,11 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Label lblCompra;
+        private System.Windows.Forms.Label lblAnimal;
+        private System.Windows.Forms.ComboBox comboCompraGado;
+        private System.Windows.Forms.ComboBox comboAnimal;
+        private System.Windows.Forms.Label lblQuantidade;
+        private System.Windows.Forms.TextBox txtQuantidade;
     }
 }
