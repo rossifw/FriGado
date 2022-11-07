@@ -1,12 +1,13 @@
 ﻿using Dapper;
 using FriGado.API.Domain;
+using FriGado.API.Repository.Generic;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace FriGado.API.Repository
 {
-    public class AnimalRepository : IAnimalRepository
+    public class AnimalRepository : IAnimalRepository<Animal>
     {
         private readonly string connectionString;
         public AnimalRepository(IConfiguration configuration)
@@ -14,7 +15,7 @@ namespace FriGado.API.Repository
             this.connectionString = configuration.GetConnectionString("DefaultConnectionString");
         }
 
-        public Animal GetAnimal(int id)
+        public Animal Get(int id)
         {
             using var conn = new SqlConnection(connectionString);
             return conn.QuerySingle<Animal>("select * from tb_animal where id = @id", new { id = id });

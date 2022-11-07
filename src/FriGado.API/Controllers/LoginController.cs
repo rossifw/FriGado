@@ -1,5 +1,4 @@
 ﻿using FriGado.API.Domain;
-using FriGado.API.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 using System;
+using FriGado.API.Repository.Generic;
 
 namespace FriGado.API.Controllers
 {
@@ -15,9 +15,9 @@ namespace FriGado.API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly IUsuarioRepository usuario;
+        private readonly IUsuarioRepository<Usuario> usuario;
 
-        public LoginController(IUsuarioRepository usuario)
+        public LoginController(IUsuarioRepository<Usuario> usuario)
         {
             this.usuario = usuario;
         }
@@ -34,7 +34,7 @@ namespace FriGado.API.Controllers
 
             if (usuario != null && !string.IsNullOrEmpty(usuario.Login))
             {
-                usuarioValido = this.usuario.GetUsuario(usuario.Login);
+                usuarioValido = this.usuario.Get(usuario.Login);
                 isCredencialValida = usuario.Senha.Equals(usuarioValido?.Senha);
             }
 

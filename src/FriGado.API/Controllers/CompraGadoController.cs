@@ -1,5 +1,5 @@
 ﻿using FriGado.API.Domain;
-using FriGado.API.Repository;
+using FriGado.API.Repository.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +10,9 @@ namespace FriGado.API.Controllers
     [ApiController]
     public class CompraGadoController : ControllerBase
     {
-        private readonly ICompraGadoRepository compraGado;
+        private readonly ICompraGadoRepository<CompraGado> compraGado;
 
-        public CompraGadoController(ICompraGadoRepository compraGado)
+        public CompraGadoController(ICompraGadoRepository<CompraGado> compraGado)
         {
             this.compraGado = compraGado;
         }
@@ -28,7 +28,7 @@ namespace FriGado.API.Controllers
         [Authorize("Bearer")]
         public IActionResult GetById(int id)
         {
-            try { return Ok(compraGado.GetCompraGado(id)); }
+            try { return Ok(compraGado.Get(id)); }
             catch { return new StatusCodeResult(204); }
         }
 

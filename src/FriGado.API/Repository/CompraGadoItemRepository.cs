@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using FriGado.API.Domain;
+using FriGado.API.Repository.Generic;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 
 namespace FriGado.API.Repository
 {
-    public class CompraGadoItemRepository : ICompraGadoItemRepository
+    public class CompraGadoItemRepository : ICompraGadoItemRepository<CompraGadoItem>
     {
         private readonly string connectionString;
         public CompraGadoItemRepository(IConfiguration configuration)
@@ -16,7 +17,7 @@ namespace FriGado.API.Repository
             this.connectionString = configuration.GetConnectionString("DefaultConnectionString");
         }
 
-        public CompraGadoItem GetCompraGadoItem(int id)
+        public CompraGadoItem Get(int id)
         {
             using var conn = new SqlConnection(connectionString);
             var query = @"select * from Tb_CompraGadoItem i

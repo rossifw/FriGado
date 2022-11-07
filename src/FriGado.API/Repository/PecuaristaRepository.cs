@@ -4,10 +4,11 @@ using FriGado.API.Domain;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
+using FriGado.API.Repository.Generic;
 
 namespace FriGado.API.Repository
 {
-    public class PecuaristaRepository : IPecuaristaRepository
+    public class PecuaristaRepository : IPecuaristaRepository<Pecuarista>
     {
         private readonly string connectionString;
         public PecuaristaRepository(IConfiguration configuration)
@@ -15,7 +16,7 @@ namespace FriGado.API.Repository
             this.connectionString = configuration.GetConnectionString("DefaultConnectionString");
         }        
 
-        public Pecuarista GetPecuarista(int id)
+        public Pecuarista Get(int id)
         {
             using var conn = new SqlConnection(connectionString);
             return conn.QuerySingle<Pecuarista>("select * from tb_pecuarista where id = @id", new { id = id });
@@ -50,6 +51,6 @@ namespace FriGado.API.Repository
             {
                 return conn.Execute("delete tb_pecuarista where id=@id", new { id = id });
             }
-        }        
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using FriGado.API.Domain;
+using FriGado.API.Repository.Generic;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 
 namespace FriGado.API.Repository
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository<Usuario>
     {
         private readonly string connectionString;
         public UsuarioRepository(IConfiguration configuration)
@@ -16,13 +17,13 @@ namespace FriGado.API.Repository
             this.connectionString = configuration.GetConnectionString("DefaultConnectionString");
         }        
 
-        public Usuario GetUsuario(int id)
+        public Usuario Get(int id)
         {
             using var conn = new SqlConnection(connectionString);
             return conn.QuerySingle<Usuario>("select * from tb_usuario where id = @id", new { id = id });
         }
 
-        public Usuario GetUsuario(string login)
+        public Usuario Get(string login)
         {
             using var conn = new SqlConnection(connectionString);
             return conn.Query<Usuario>("select * from tb_usuario where login = @login", new { login = login }).SingleOrDefault();

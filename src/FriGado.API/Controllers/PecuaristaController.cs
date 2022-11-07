@@ -1,5 +1,5 @@
 ﻿using FriGado.API.Domain;
-using FriGado.API.Repository;
+using FriGado.API.Repository.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +10,9 @@ namespace FriGado.API.Controllers
     [ApiController]
     public class PecuaristaController : ControllerBase
     {
-        private readonly IPecuaristaRepository pecuarista;
+        private readonly IPecuaristaRepository<Pecuarista> pecuarista;
 
-        public PecuaristaController(IPecuaristaRepository pecuarista)
+        public PecuaristaController(IPecuaristaRepository<Pecuarista> pecuarista)
         {
             this.pecuarista = pecuarista;
         }
@@ -28,7 +28,7 @@ namespace FriGado.API.Controllers
         [Authorize("Bearer")]
         public IActionResult GetById(int id)
         {
-            try { return Ok(pecuarista.GetPecuarista(id)); }
+            try { return Ok(pecuarista.Get(id)); }
             catch { return new StatusCodeResult(204); }
         }
 

@@ -1,5 +1,5 @@
 ﻿using FriGado.API.Domain;
-using FriGado.API.Repository;
+using FriGado.API.Repository.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +10,9 @@ namespace FriGado.API.Controllers
     [ApiController]
     public class AnimalController : ControllerBase
     {
-        private readonly IAnimalRepository animal;
+        private readonly IAnimalRepository<Animal> animal;
 
-        public AnimalController(IAnimalRepository animal)
+        public AnimalController(IAnimalRepository<Animal> animal)
         {
             this.animal = animal;
         }
@@ -28,7 +28,7 @@ namespace FriGado.API.Controllers
         [Authorize("Bearer")]
         public IActionResult GetById(int id)
         {
-            try { return Ok(animal.GetAnimal(id)); }
+            try { return Ok(animal.Get(id)); }
             catch { return new StatusCodeResult(204); }
         }
 

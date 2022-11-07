@@ -1,5 +1,6 @@
 using FriGado.API.Domain;
 using FriGado.API.Repository;
+using FriGado.API.Repository.Generic;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -25,11 +26,11 @@ namespace FriGado.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IUsuarioRepository, UsuarioRepository>();
-            services.AddSingleton<IPecuaristaRepository, PecuaristaRepository>();
-            services.AddSingleton<IAnimalRepository, AnimalRepository>();
-            services.AddSingleton<ICompraGadoRepository, CompraGadoRepository>();
-            services.AddSingleton<ICompraGadoItemRepository, CompraGadoItemRepository>();
+            services.AddSingleton<IUsuarioRepository<Usuario>, UsuarioRepository>();
+            services.AddSingleton<IPecuaristaRepository<Pecuarista>, PecuaristaRepository>();
+            services.AddSingleton<IAnimalRepository<Animal>, AnimalRepository>();
+            services.AddSingleton<ICompraGadoRepository<CompraGado>, CompraGadoRepository>();
+            services.AddSingleton<ICompraGadoItemRepository<CompraGadoItem>, CompraGadoItemRepository>();
 
 
             var signingConfigurations = new SigningConfigurations();
