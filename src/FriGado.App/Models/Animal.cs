@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +15,14 @@ namespace FriGado.App.Models
         public decimal Preco { get; set; }
 
         private static readonly string _url = $"{Config.APIUrl}/animal";
-        private static readonly HttpClient _client = new HttpClient();
+        private static readonly HttpClient _client = GetHttpClient();
+
+        public static HttpClient GetHttpClient()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Config.BearerToken);
+            return httpClient;
+        }
 
         public static async Task<Animal> Get(int id)
         {

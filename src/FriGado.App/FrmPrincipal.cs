@@ -22,7 +22,7 @@ namespace FriGado.App
         private void Init()
         {
             new FrmSplash().ShowDialog();
-            //new FrmLogin().ShowDialog();
+            new FrmLogin().ShowDialog();
         }
 
         private void CarregarForm(Form frm, Button btn)
@@ -35,7 +35,7 @@ namespace FriGado.App
             frm.Dock = DockStyle.Fill;
             frm.Show();
 
-            btnAtivo=btn;
+            btnAtivo = btn;
             btn.Enabled = false;
         }
 
@@ -66,7 +66,7 @@ namespace FriGado.App
         private void btnAnimal_Click(object sender, EventArgs e)
         {
             CarregarForm(new FrmAnimal(), btnAnimal);
-        }        
+        }
 
         private void btnCompraGado_Click(object sender, EventArgs e)
         {

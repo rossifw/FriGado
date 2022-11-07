@@ -90,7 +90,7 @@ SET IDENTITY_INSERT Tb_CompraGadoItem OFF
 
 
 SET IDENTITY_INSERT Tb_Usuario ON
-insert into Tb_Usuario(id, Login, Nome, Senha) values(01, 'admin', 'Administrador', 'fede7086f704c1552301ded0dbf05c955483e5fc41b260d6c50a8441d733d4c2');
+insert into Tb_Usuario(id, Login, Nome, Senha) values(01, 'admin', 'Administrador', 'd46260eef61364d92354eea0cd5acdc2e475e6b205ea64cfb583f5ce2a61aa0e');
 SET IDENTITY_INSERT Tb_Usuario OFF
 
 select i.Id, a.Descricao, i.Quantidade, a.Preco [Preço unitário], a.Preco*i.Quantidade Total, p.Nome Pecuarista, c.DataEntrega from Tb_CompraGadoItem i

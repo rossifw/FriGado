@@ -78,7 +78,7 @@ namespace FriGado.API.Controllers
                 return Ok(new
                 {
                     authenticated = false,
-                    message = "Falha ao autenticar"
+                    message = "Credencial inválida!"
                 });
             }
         }

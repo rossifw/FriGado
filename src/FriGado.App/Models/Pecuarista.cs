@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,8 +15,14 @@ namespace FriGado.App.Models
         public string Nome { get; set; }
 
         private static readonly string _url = $"{Config.APIUrl}/pecuarista";
-        private static readonly HttpClient _client = new HttpClient();
+        private static readonly HttpClient _client = GetHttpClient();
 
+        public static HttpClient GetHttpClient()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Config.BearerToken);
+            return httpClient;
+        }
         public static async Task<Pecuarista> Get(int id)
         {
             var response = await _client.GetStringAsync($"{_url}/{id}");
