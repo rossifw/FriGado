@@ -26,10 +26,6 @@ namespace FriGado.App.Login
             InitializeComponent();
         }
 
-
-
-
-
         private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (isItToExit)
@@ -38,7 +34,40 @@ namespace FriGado.App.Login
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Autenticar(txtUsuario.Text, txtSenha.Text);
+            VerificarEAutenticar(txtUsuario.Text, txtSenha.Text);
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\n' || e.KeyChar == '\r')
+                VerificarEAutenticar(txtUsuario.Text, txtSenha.Text);
+        }
+
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\n' || e.KeyChar == '\r')
+                VerificarEAutenticar(txtUsuario.Text, txtSenha.Text);
+        }
+
+        private void VerificarEAutenticar(string usuario, string senha)
+        {
+            if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(senha))
+            {
+                Autenticar(usuario, senha);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(usuario))
+            {
+                txtUsuario.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(senha))
+            {
+                txtSenha.Focus();
+                return;
+            }
         }
 
         private async void Autenticar(string usuario, string senha)
@@ -69,6 +98,8 @@ namespace FriGado.App.Login
 
                 txtUsuario.Text = "";
                 txtSenha.Text = "";
+
+                txtUsuario.Focus();
             }
         }
 
@@ -95,18 +126,6 @@ namespace FriGado.App.Login
             public bool Authenticated { get; set; }
             public string AccessToken { get; set; }
             public string Message { get; set; }
-        }
-
-        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == '\n' || e.KeyChar == '\r')
-                txtSenha.Focus();
-        }
-
-        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == '\n' || e.KeyChar == '\r')
-                Autenticar(txtUsuario.Text, txtSenha.Text);
         }
     }
 }
