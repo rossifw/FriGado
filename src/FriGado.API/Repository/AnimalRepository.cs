@@ -3,53 +3,41 @@ using FriGado.API.Domain;
 using FriGado.API.Repository.Generic;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 
 namespace FriGado.API.Repository
 {
-    public class AnimalRepository : IAnimalRepository<Animal>
+    //public class AnimalRepository : IAnimalRepository<Animal>
+    public class AnimalRepository : Repository<Animal>, IAnimalRepository<Animal>
     {
-        private readonly string connectionString;
-        public AnimalRepository(IConfiguration configuration)
-        {
-            this.connectionString = configuration.GetConnectionString("DefaultConnectionString");
-        }
+        public AnimalRepository(IConfiguration configuration) : base(configuration) { }
 
-        public Animal Get(int id)
+        public override Animal Get(int id)
         {
-            using var conn = new SqlConnection(connectionString);
+            using var conn = Connection;
             return conn.QuerySingle<Animal>("select * from tb_animal where id = @id", new { id = id });
         }
 
-        public IEnumerable<Animal> ListAll()
+        public override IEnumerable<Animal> ListAll()
         {
-            using (var conn = new SqlConnection(connectionString))
-            {
-                return conn.Query<Animal>("select * from tb_animal");
-            }
+            using var conn = Connection;
+            return conn.Query<Animal>("select * from tb_animal");
         }
 
-        public int Add(Animal animal)
+        public override int Add(Animal animal)
         {
-            using (var conn = new SqlConnection(connectionString))
-            {
-                return conn.Execute("insert into tb_animal values(@desc, @preco)", new { desc = animal.Descricao, preco = animal.Preco });
-            }
+            using var conn = Connection;
+            return conn.Execute("insert into tb_animal values(@desc, @preco)", new { desc = animal.Descricao, preco = animal.Preco });
         }
-        public int Update(Animal animal)
+        public override int Update(Animal animal)
         {
-            using (var conn = new SqlConnection(connectionString))
-            {
-                return conn.Execute("update tb_animal set Descricao=@desc, Preco=@preco where id=@id", new { desc = animal.Descricao, preco = animal.Preco, id = animal.Id });
-            }
+            using var conn = Connection;
+            return conn.Execute("update tb_animal set Descricao=@desc, Preco=@preco where id=@id", new { desc = animal.Descricao, preco = animal.Preco, id = animal.Id });
         }
 
-        public int Remove(int id)
+        public override int Remove(int id)
         {
-            using (var conn = new SqlConnection(connectionString))
-            {
-                return conn.Execute("delete tb_animal where id=@id", new { id = id });
-            }
+            using var conn = Connection;
+            return conn.Execute("delete tb_animal where id=@id", new { id = id });
         }
     }
 }

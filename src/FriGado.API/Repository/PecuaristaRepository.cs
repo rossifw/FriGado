@@ -1,56 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FriGado.API.Domain;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using System.Data.SqlClient;
 using FriGado.API.Repository.Generic;
 
 namespace FriGado.API.Repository
 {
-    public class PecuaristaRepository : IPecuaristaRepository<Pecuarista>
+    public class PecuaristaRepository : Repository<Pecuarista>, IPecuaristaRepository<Pecuarista>
     {
-        private readonly string connectionString;
-        public PecuaristaRepository(IConfiguration configuration)
-        {
-            this.connectionString = configuration.GetConnectionString("DefaultConnectionString");
-        }        
+        public PecuaristaRepository(IConfiguration configuration) : base(configuration) { }
 
-        public Pecuarista Get(int id)
+        public override Pecuarista Get(int id)
         {
-            using var conn = new SqlConnection(connectionString);
+            using var conn = Connection;
             return conn.QuerySingle<Pecuarista>("select * from tb_pecuarista where id = @id", new { id = id });
         }
 
-        public IEnumerable<Pecuarista> ListAll()
+        public override IEnumerable<Pecuarista> ListAll()
         {
-            using (var conn = new SqlConnection(connectionString))
-            {
-                return conn.Query<Pecuarista>("select * from tb_pecuarista");
-            }
+            using var conn = Connection;
+            return conn.Query<Pecuarista>("select * from tb_pecuarista");
         }
 
-        public int Add(Pecuarista pecuarista)
+        public override int Add(Pecuarista pecuarista)
         {
-            using (var conn = new SqlConnection(connectionString))
-            {
-                return conn.Execute("insert into tb_pecuarista values(@nome)", new { nome = pecuarista.Nome });
-            }
+            using var conn = Connection;
+            return conn.Execute("insert into tb_pecuarista values(@nome)", new { nome = pecuarista.Nome });
         }
-        public int Update(Pecuarista pecuarista)
+        public override int Update(Pecuarista pecuarista)
         {
-            using (var conn = new SqlConnection(connectionString))
-            {
-                return conn.Execute("update tb_pecuarista set nome=@nome where id=@id", new { nome = pecuarista.Nome, id = pecuarista.Id });
-            }
+            using var conn = Connection;
+            return conn.Execute("update tb_pecuarista set nome=@nome where id=@id", new { nome = pecuarista.Nome, id = pecuarista.Id });
         }
 
-        public int Remove(int id)
+        public override int Remove(int id)
         {
-            using (var conn = new SqlConnection(connectionString))
-            {
-                return conn.Execute("delete tb_pecuarista where id=@id", new { id = id });
-            }
+            using var conn = Connection;
+            return conn.Execute("delete tb_pecuarista where id=@id", new { id = id });
         }
     }
 }
